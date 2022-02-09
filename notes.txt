@@ -7,4 +7,4 @@ viewChild decorator k zariye hum local reference k through html element ki prope
 
 ab agr hamy html tags k content read krny ho jo jumne apny compoent tag k open or closing tag k darmiyan rakhy ho tu usy hum <ng-content></ng-content> tag jo k ek directive h iskai zairye us component mai render kara sakte hain
 
-Angular Component Lifecycle hooks Video 79
+Angular Component Lifecycle hooks Video 79 a
