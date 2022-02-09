@@ -20,6 +20,7 @@ export class RecipeService {
        ];     
 
        //recipeSelected = new Subject<Recipe>();
+       public refreshEvent = new Subject<void>();
 
        geRecipes():Recipe[]  {
            return this.recipes.slice();
@@ -32,4 +33,14 @@ export class RecipeService {
        addIngredientsToShoppingList(ingredient:Ingredient[]) {
         this.slservice.addIngredients(ingredient);
        }
+
+       addRecipe(recipe:Recipe) {
+        this.recipes.push(recipe);
+        this.refreshEvent.next();
+       }
+
+       updateRecipe(recipe:Recipe,index:number) {
+           this.recipes[index]=recipe;
+           this.refreshEvent.next();
+        }
 }
