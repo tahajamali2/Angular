@@ -39,8 +39,17 @@ export class RecipeService {
         this.refreshEvent.next();
        }
 
-       updateRecipe(recipe:Recipe,index:number) {
-           this.recipes[index]=recipe;
+       updateRecipe(recipe:Recipe,id:number) {
+           this.recipes[this.recipes.findIndex((obj)=>{return obj.id===id})]=recipe;
            this.refreshEvent.next();
+        }
+
+        deleteRecipe(id:number) {
+            this.recipes.splice(this.recipes.findIndex((obj)=>{return obj.id===id}),1);
+            this.refreshEvent.next();
+        }
+
+        getNewID():number {
+            return this.recipes[this.recipes.length-1].id+1;
         }
 }
