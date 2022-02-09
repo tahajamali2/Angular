@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="projectname">Project Name</label>
+              <input
+                type="text"
+                id="projectname"
+                formControlName="projectname"
+                class="form-control">
+                <span *ngIf="!assignmentForm.get('projectname').valid && (assignmentForm.get('projectname').touched || assignmentForm.get('projectname').dirty)" class="help-block">
+                  <span *ngIf="assignmentForm.get('projectname').errors?assignmentForm.get('projectname').errors['nameNotAllowed']:false">This projectname is not allowed (Simple Validator) !</span>
+                  <span *ngIf="assignmentForm.get('projectname').errors?assignmentForm.get('projectname').errors['nameNotAllowedAsync']:false">This projectname is not allowed (Async Validator) !</span>
+                  <span *ngIf="assignmentForm.get('projectname').errors?assignmentForm.get('projectname').errors['required']:false">This field is required !</span> 
+                </span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                formControlName="email"
+                class="form-control">
+                <span *ngIf="!assignmentForm.get('email').valid && assignmentForm.get('email').touched" class="help-block">Please enter a valid email</span>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Project Status</label>
+                  <select class="form-control" id="status" formControlName="status">
+                      <option *ngFor="let stat of projectStatuses" [value]="stat">{{stat}}</option>
+                  </select>
+              </div>
+          
+          
+         
+          <span *ngIf="!assignmentForm.valid && assignmentForm.touched" class="help-block">Please enter valid data!</span>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

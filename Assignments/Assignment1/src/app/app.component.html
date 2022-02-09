@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-game (secondEvent)="onEverySecond($event)"></app-game>
+      <app-mergeview *ngFor="let numberev of numberarrays" [second]="numberev">
+    </app-mergeview>
+    </div>
+  </div>
+</div>

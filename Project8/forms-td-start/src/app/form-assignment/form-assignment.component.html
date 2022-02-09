@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="onSubmit()" #af="ngForm">
+            <span class="help-block" *ngIf="!af.valid && af.touched">Please fill the form fields approprietly !</span>
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="email">Mail</label>
+                <input 
+                type="email"
+                 id="email"
+                  class="form-control"
+                  ngModel
+                  name="email"
+                  required
+                  email
+                  #email="ngModel">
+                  <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email</span>
+              </div>
+
+              <div class="form-group">
+                <label for="subscriptions">Subscriptions</label>
+                <select id="subscriptions" [ngModel]="defaultSubs" name="subscriptions" class="form-control">
+                  <option value="basic">Basic</option>
+                  <option value="advanced">Advanced</option>
+                  <option value="pro">Pro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                type="password" 
+                id="password" 
+                class="form-control"
+                ngModel
+                name="password"
+                required
+                #password="ngModel">
+                <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a valid password</span>
+              </div>
+
+              <button class="btn btn-primary" type="submit" [disabled]="!af.valid">Submit</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row" *ngIf="formsubmitted">
+        <div class="col-xs-12">
+          <h3>Your Data</h3>
+          <p>Mail : {{formData.email}}</p>
+          <p>Subscription : {{formData.subscription}}</p>
+          <p>Password : {{formData.password}} </p>
+        </div>
+      </div>
+</div>

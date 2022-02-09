@@ -1,0 +1,10 @@
+local reference sai hum kisi bhi input element ki koi bhi element property value fetch kr sakty hain par condition ye h k ye reference sirf local template mai hi chalega. local ref use krne k liye #propertyname    ye kisi bhi tag pai laga dai
+
+parent componet sai data ko child component mai pass krne k liye hum child component mai @Input() decorator use krt hain
+or isi tarha child component sai parent ko data pass krne k liye hum @Output decorator use krty hain ye event emit krta hain
+
+viewChild decorator k zariye hum local reference k through html element ki property ko direct component ts file mai use kr sakte hain without passing to any function. 
+
+ab agr hamy html tags k content read krny ho jo jumne apny compoent tag k open or closing tag k darmiyan rakhy ho tu usy hum <ng-content></ng-content> tag jo k ek directive h iskai zairye us component mai render kara sakte hain
+
+Angular Component Lifecycle hooks Video 79

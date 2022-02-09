@@ -1,0 +1,9 @@
+<h3>Inactive Users :</h3>
+<br>
+<ul class="list-group">
+    <li *ngFor="let inActiveElem of userservice.getInactiveUsers();" class="list-group-item">
+        {{inActiveElem.userName}} | <a href="#" (click)="setActive(inActiveElem.ID)">Set status to Active</a>
+    </li>
+    
+    </ul>
+    
