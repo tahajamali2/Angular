@@ -1,0 +1,4 @@
+<button (click)="toggleParagraph()">Toggle Paragraph</button>
+
+<h1 *ngIf="togglePara">Secret Password = 'tuna'</h1>
+<p *ngFor="let lg of logclick; let i = index" [ngStyle]="{'background-color':getBackColor(i)}" [ngClass]="i >= 4 ? 'specialclass':''">{{lg}}</p>
