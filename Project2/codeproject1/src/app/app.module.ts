@@ -1,45 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DropdownDirective } from './shared/dropdown.directive';
-import { ShoppingListService } from './shopping-list/services/shoppinglist.service';
-import { RecipeService } from './recipes/services/recipes.service';
 import { BlankComponentComponent } from './blank-component/blank-component.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { CoreModule } from './core.module';
+import { LoggingService } from './logging.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    DropdownDirective,
     BlankComponentComponent,
-    ErrorpageComponent,
-    RecipeEditComponent
+    ErrorpageComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    ReactiveFormsModule
+    HttpClientModule,
+    SharedModule,
+    CoreModule,
+    AppRoutingModule
   ],
-  providers: [ShoppingListService,RecipeService],
+  //providers:[LoggingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
