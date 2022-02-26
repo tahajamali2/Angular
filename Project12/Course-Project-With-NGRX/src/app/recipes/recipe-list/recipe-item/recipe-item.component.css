@@ -1,0 +1,4 @@
+.selected {
+    border-style: dashed;
+    border: 1px #000 solid;
+}

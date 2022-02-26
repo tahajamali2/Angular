@@ -11,7 +11,7 @@ const routes:Routes = [
 @NgModule({
     imports:[RouterModule.forChild(routes)],
 exports:[RouterModule],
-//providers:[LoggingService]
+providers:[LoggingService]
 })
 export class ShoppingListRoutingModule {
 
