@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { BlankComponentComponent } from './blank-component/blank-component.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
+import { RecipesRoutingModule } from "./recipes/recipes-routing.module";
 
 
 const appRoutes : Routes = [

@@ -22,8 +22,10 @@ export interface AuthResponseData {
 export class AuthEffects {
 
     @Effect({dispatch:false})
-    authRedirect = this.actions$.pipe(ofType(AuthActions.AUTHENTICATE_SUCCESS),tap(()=> {
-        this.router.navigate(['/recipes']);
+    authRedirect = this.actions$.pipe(ofType(AuthActions.AUTHENTICATE_SUCCESS),tap((authSuccessAction:AuthActions.AuthenticateSuccess)=> {
+        if(authSuccessAction.payload.redirect) {
+        this.router.navigate(['/']);
+        }
     }))
 
 
@@ -46,7 +48,7 @@ export class AuthEffects {
         //this.user.next(loadedUser);
         const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
         this.authService.setLogoutTimer(expirationDuration);
-        return new AuthActions.AuthenticateSuccess({email:loadedUser.email,userId:loadedUser.id,token:loadedUser.token,expirationDate:new Date(userData._tokenExpirationDate)})
+        return new AuthActions.AuthenticateSuccess({email:loadedUser.email,userId:loadedUser.id,token:loadedUser.token,expirationDate:new Date(userData._tokenExpirationDate),redirect:false})
         
     }
 
@@ -89,7 +91,7 @@ export class AuthEffects {
         const expressionDate = new Date(new Date().getTime()+ +(resData.expiresIn)*1000)
         localStorage.setItem('userData',JSON.stringify(new User(resData.email,resData.localId,resData.idToken,expressionDate)))
         this.authService.setLogoutTimer(+(resData.expiresIn)*1000);
-        return new AuthActions.AuthenticateSuccess({email:resData.email,userId:resData.localId,token:resData.idToken,expirationDate:expressionDate});
+        return new AuthActions.AuthenticateSuccess({email:resData.email,userId:resData.localId,token:resData.idToken,expirationDate:expressionDate,redirect:true});
     }
 
      handleError = (errorResp) => {

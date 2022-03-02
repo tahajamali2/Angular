@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Recipe } from '../../recipe.model';
 import { RecipeService } from '../../services/recipes.service';
+import * as RecipesActions from '../../store/recipes.actions';
+
 
 @Component({
   selector: 'app-recipe-item',
@@ -9,7 +12,7 @@ import { RecipeService } from '../../services/recipes.service';
 })
 export class RecipeItemComponent implements OnInit {
 @Input("recipeItem") recipeItem:Recipe;
-  constructor(private recipeservice:RecipeService) {
+  constructor(private recipeservice:RecipeService,private store:Store) {
 
    }
 
@@ -19,6 +22,7 @@ export class RecipeItemComponent implements OnInit {
   onItemclick() 
   {
     //this.recipeservice.recipeSelected.next(this.recipeItem);
+    //this.store.dispatch(new RecipesActions.SelectRecipe(this.recipeItem));
   }
 
 }
