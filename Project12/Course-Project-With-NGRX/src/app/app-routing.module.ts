@@ -18,7 +18,8 @@ const appRoutes : Routes = [
 @NgModule({
     imports:[
         // RouterModule.forRoot(appRoutes,{useHash:true})--for hash-mode
-        RouterModule.forRoot(appRoutes,{preloadingStrategy:PreloadAllModules})
+        // RouterModule.forRoot(appRoutes,{useHash:true})--for hash-mode
+RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules, initialNavigation: 'enabledBlocking' })
     ]
     ,
     exports : [RouterModule]

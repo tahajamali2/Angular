@@ -26,7 +26,7 @@ import { RecipesEffects } from './recipes/store/recipes.effects';
     ErrorpageComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects,RecipesEffects]),
